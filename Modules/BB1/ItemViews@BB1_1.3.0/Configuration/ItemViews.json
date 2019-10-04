@@ -1,0 +1,21 @@
+{
+	"type": "object",
+
+   
+    "resource": {
+        "template": {
+            "item-option-selector": [
+                "item_views_option_color.tpl", 
+                "item_views_option_dropdown.tpl", 
+                "item_views_option_radio.tpl", 
+                "item_views_option_text.tpl",
+                "item_views_option_tile.tpl"
+            ],
+            "item-option-selected": [
+                "item_views_selected_option.tpl",
+                "item_views_selected_option_color.tpl"
+            ]
+        }
+    }
+
+}

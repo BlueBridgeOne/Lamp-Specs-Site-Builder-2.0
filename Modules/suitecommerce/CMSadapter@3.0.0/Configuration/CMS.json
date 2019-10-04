@@ -1,0 +1,25 @@
+{
+    "type": "object",
+    "group": {
+        "id": "integrations",
+		"title": "Integrations",
+		"description": "Integration with third party software"
+    },
+    "subtab": {
+        "id": "cms",
+        "title": "Site Management Tools",
+        "docRef": "bridgehead_4667032981",
+        "description": "CMS - Content Management System by CXM",
+        "group": "integrations"
+    },
+    "properties": {
+        "cms.useCMS": {
+            "group": "integrations",
+            "subtab": "cms",
+            "type": "boolean",
+            "title": "Use Site Management Tools",
+            "description": "Check this box to enable Site Management Tools integration in SuiteCommerce Advanced.",
+            "default": true
+        }
+    }
+}

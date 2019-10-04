@@ -1,0 +1,72 @@
+{
+	"type": "object",
+
+    "properties": {
+
+      "itemOptions": {
+            "group": "shoppingApplication",
+            "type": "array",
+            "title": "Item Options",
+            "docRef": "bridgehead_4667044038",
+            "description": "Settings for displaying each of the item options in the Detailed Page. Each of the item options are objects that extend whats comming of the api.  This options should have (but not limited to) these documented properties. We have provided some templates for you to use but you are encouraged to create your own:<br/> For the selector we have created: item_views_option_color_tpl, item_views_option_text_tpl, item_views_option_tile_tpl, and for the selected we have created: item_views_selected_option_tpl, item_views_selected_option_color_tpl",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "itemOptionId": {
+                        "type": "string",
+                        "title": "Item Option Id",
+                        "description": "The id of an option in the item"
+                    },
+                    "cartOptionId": {
+                        "type": "string",
+                        "title": "Cart Option Id",
+                        "description": "The id of an option in the cart (!required, is the primary key for the mapping)"
+                    },
+                    "colors": {
+                        "type": "string",
+                        "title": "Color Palette",
+                        "description": "Use the Facets color palette for this"
+                    },
+                    "label": {
+                        "type": "string",
+                        "title": "Label",
+                        "description": "he label that the option will be shown ",
+                        "translate": true
+                    },
+                    "url": {
+                        "type": "string",
+                        "title": "url",
+                        "description": "the key of the option when its stored in the url"
+                    },
+                    "templateSelector": {
+                        "type": "string",
+                        "title": "Selector Template",
+                        "description": "the template that will be rendered for selecting the options (Item list and PDP)",
+                        "source": "$resource.template.item-option-selector"
+                    },
+
+                    "templateSelected": {
+                        "type": "string",
+                        "title": "Selected Template",
+                        "description": "the template that will be rendered for the item in the cart (Cart and Cart confirmation)",
+                        "source": "$resource.template.item-option-selected"
+                    }
+                }
+            },
+
+            "default":[
+                {
+                    "cartOptionId": "custcol13",
+                    "label": "Color",
+                    "url": "color",
+                    "colors": "default",
+                    "templateSelector": "item_views_option_color.tpl",
+                    "templateSelected": "item_views_selected_option_color.tpl"
+
+                }
+            ]
+        }
+
+    }
+
+}

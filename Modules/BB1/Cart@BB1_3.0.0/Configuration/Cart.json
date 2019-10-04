@@ -1,0 +1,38 @@
+{
+	"type": "object",
+
+    "subtab": {
+        "id": "cart",
+        "group": "shoppingApplication",
+        "title": "Cart Behavior",
+        "description": "Cart related configuration"
+    },
+
+    "properties": {
+        "addToCartBehavior": {
+            "group": "catalog",
+            "subtab": "cart",
+            "type": "string",
+            "title": "Add to cart behavior",
+            "description": "Choose the action that occurs when the user adds an item to the cart.",
+            "default": "showCartConfirmationModal",
+            "enum": ["goToCart", "showMiniCart", "showCartConfirmationModal"]
+        },
+        "addToCartFromFacetsView": {
+            "group": "catalog",
+            "subtab": "cart",
+            "type": "boolean",
+            "title": "Add to Cart from Facets View",
+            "description" : "Check this box to display an Add to Cart button on each search result.",
+            "default": false
+        },
+        "promocodes.allowMultiples": {
+            "group": "catalog",
+            "subtab": "cart",
+            "type": "boolean",
+            "title": "Allow adding more than one promocode",
+            "description" : "Check this box to enable stackable promotions on your SCA site.",
+            "default": false
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+	"type": "object",
+    "properties": {
+        "multiImageOption": {
+            "group": "layout",
+            "subtab": "images",
+            "type": "string",
+            "title": "Multiple Image Option",
+            "description": "For multi images, option that determines the id of the option that handles the image change. e.g. 'custcol_color'",
+            "default": ""
+        }
+    }
+}

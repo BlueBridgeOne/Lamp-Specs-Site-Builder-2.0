@@ -1,0 +1,327 @@
+{
+	"type": "object",
+
+    "group": {
+        "id": "catalog",
+        "title": "Shopping Catalog",
+        "docRef": "bridgehead_4667037093",
+        "description": "Commerce Catalog - search. pdp, facets, etc"
+    },
+
+    "subtab": {
+        "id": "facetsSeoLimits",
+        "group": "catalog",
+        "title": "Facets SEO",
+        "docRef": "bridgehead_4667037495",
+        "description": "Facets SEO"
+    },
+
+    "resource": {
+        "template": {
+            "facet-navigation-item": [
+                "facets_faceted_navigation_item.tpl",
+                "facets_faceted_navigation_item_color.tpl",
+                "facets_faceted_navigation_item_range.tpl"
+            ],
+            "facets-item-cell": [
+                "facets_item_cell_list.tpl",
+                "facets_item_cell_table.tpl",
+                "facets_item_cell_grid.tpl"
+            ]
+        }
+    },
+
+    "properties": {
+
+        "facetsSeoLimits.numberOfFacetsGroups": {
+            "type": "string",
+            "group": "catalog",
+            "subtab": "facetsSeoLimits",
+            "title": "Number of Facets groups",
+            "description": "Enter a number to specify how many facet groups are indexed."
+        },
+         "facetsSeoLimits.numberOfFacetsValues": {
+            "type": "string",
+            "group": "catalog",
+            "subtab": "facetsSeoLimits",
+            "title": "Number of Facets Values",
+            "description": "Enter a number to specify how many multi-facet groups are grouped together."
+        },
+        "facetsSeoLimits.options": {
+            "type": "string",
+            "group": "catalog",
+            "subtab": "facetsSeoLimits",
+            "title": "Options",
+            "description": " Which options will be indexed, if you omit one here, and it's present in the url it will not be indexed",
+            "enum": ["order", "page", "show", "display", "keywords"],
+            "default": ["page", "keywords"],
+            "multiselect": true
+        },
+
+
+        "facets": {
+            "group": "catalog",
+            "type": "array",
+            "title": "Facets",
+            "docRef": "bridgehead_4393383668",
+            "description": "Facets editor declarations",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "title": "item field id",
+                        "description": "Netsuite item field id, something like 'custitem31'",
+                        "mandatory": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "title": "Name",
+                        "translate": true,
+                        "description": "Label for this facet in the UI",
+                        "mandatory": true
+                    },
+                    "url": {
+                        "type": "string",
+                        "title": "Url",
+                        "description": "Url fragment for identifying the facet in the url. If none is set then the netsuite list record id will be used. "
+                    },
+                    "priority": {
+                        "type": "string",
+                        "title": "Priority",
+                        "description": "A integer grater than zero indicating for ordering facets editors in the catalog browser. Facets with greater priority numbers will appear above others.",
+                        "enum": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+                        "default": "5"
+                    },
+                    "behavior": {
+                        "type": "string",
+                        "title": "Behavior",
+                        "description": "behavior can be one of 'range', 'multi'. If 'range', a double slider will be showed as the editor. If 'multi', multiple facet value selection will be available",
+                        "enum": ["range", "multi"]
+                    },
+                    "template": {
+                        "type": "string",
+                        "title": "Template",
+                        "description": "The template used to render this facet editor, some available are item_color and item_range",
+                        "source": "$resource.template.facet-navigation-item"
+                    },
+                    "colors": {
+                        "type": "string",
+                        "title": "Color Palette",
+                        "description": "For those facets editors that shows color, please indicate which color palette to use to show the colors defined in ns lists",
+                        "default": "default"
+                    },
+                    "collapsed": {
+                        "type": "boolean",
+                        "title": "Collapsed",
+                        "description": "If true it will be collapsed in the UI - the user can uncollapse it manually if needed",
+                        "default": false
+                    },
+                    "uncollapsible": {
+                        "type": "boolean",
+                        "title": "Non Collapsible",
+                        "description": "If true the user won't be able to collapse the facet editor",
+                        "default": false
+                    },
+                    "showHeading": {
+                        "type": "boolean",
+                        "title": "Show Heading",
+                        "description": "if false the heading of the facet editor won't be shown  ",
+                        "default": true
+                    },
+                    "titleToken": {
+                        "type": "string",
+                        "title": "Title Format",
+                        "description": "format for the facet on the document title's when it is selected. Can be a string like 'from $(0) to $(1)' for range behaviour or 'foo $(0) bar' for others. Also it can be a function that accept the facet object as the one parameter."
+                    },
+                    "titleSeparator": {
+                        "type": "string",
+                        "title": "Title Separator",
+                        "description": "Separator between facets in the document's title"
+                    },
+                    "parser": {
+                        "type": "string",
+                        "title": "Parser",
+                        "description": "The function that shows the value in the UI, use 'default' if not sure. Js Code: Facets.js > facetConfigTranslators",
+                        "default": "default",
+                        "enum": ["default", "currency", "quantity"]
+                    }
+                }
+            },
+
+            "default":[
+                {
+                    "id": "pricelevel5",
+                    "name": "Price",
+                    "priority": 10,
+                    "behavior": "range",
+                    "template": "facets_faceted_navigation_item_range.tpl",
+                    "uncollapsible": true,
+                    "titleToken": "Price $(1) - $(0)",
+                    "titleSeparator": ", ",
+                    "parser": "currency"
+                }
+
+            ]
+        }
+    ,   "facetsColorPalette": {
+            "group": "catalog",
+            "type": "array",
+            "title": "Facets Color Palettes",
+            "docRef": "bridgehead_4667037557",
+            "description": "Color palettes maps a color defined in a netsuite list to a CSS color value. Then, one or more color facets can use a palette to show the values. <br/>Use this table to modify default color palette or create new ones. <br/><b>IMPORTANT: </b>",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "paletteId": {
+                        "type": "string",
+                        "title": "Palette id",
+                        "description": "The palette id for this color",
+                        "mandatory": true
+                    }
+                ,   "colorName": {
+                        "type": "string",
+                        "title": "Color name",
+                        "description": "The color name as it is in the netsuite list used in the facet declaration.",
+                        "mandatory": true
+                    }
+                ,   "colorValue": {
+                        "type": "string",
+                        "title": "Color value",
+                        "description": "The color CSS value - must be a valid CSS color. ",
+                        "mandatory": true
+                    }
+                }
+            },
+
+
+            "default":[
+                {
+                    "paletteId": "default",
+                    "colorName": "black",
+                    "colorValue": "#212121"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "gray",
+                    "colorValue": "#9c9c9c"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "grey",
+                    "colorValue": "#9c9c9c"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "white",
+                    "colorValue": "#fff"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "brown",
+                    "colorValue": "#804d3b"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "beige",
+                    "colorValue": "#eedcbe"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "blue",
+                    "colorValue": "#0f5da3"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "light-blue",
+                    "colorValue": "#8fdeec"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "purple",
+                    "colorValue": "#9b4a97"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "lilac",
+                    "colorValue": "#ceadd0"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "red",
+                    "colorValue": "#f63440"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "pink",
+                    "colorValue": "#ffa5c1"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "orange",
+                    "colorValue": "#ff5200"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "peach",
+                    "colorValue": "#ffcc8c"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "yellow",
+                    "colorValue": "#ffde00"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "light-yellow",
+                    "colorValue": "#ffee7a"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "green",
+                    "colorValue": "#00af43"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "lime",
+                    "colorValue": "#c3d600"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "teal",
+                    "colorValue": "#00ab95"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "aqua",
+                    "colorValue": "#28e1c5"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "burgandy",
+                    "colorValue": "#9c0633"
+                }
+                ,{
+                    "paletteId": "default",
+                    "colorName": "navy",
+                    "colorValue": "#002d5d"
+                }
+            ]
+        }
+    ,   "lightColors": {
+            "group": "catalog",
+            "title": "Light colors",
+            "docRef": "section_4701517042",
+            "description": "The light colors in the color palette",
+            "type": "array",
+            "items": {
+                "type": "string",
+                "title": "Color Name"
+            },
+            "default": [
+               "white"
+            ]
+        }
+    }
+
+}

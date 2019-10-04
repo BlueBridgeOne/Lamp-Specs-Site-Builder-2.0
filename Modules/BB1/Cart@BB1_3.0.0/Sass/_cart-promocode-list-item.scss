@@ -1,0 +1,40 @@
+/*
+	© 2016 NetSuite Inc.
+	User may not copy, modify, distribute, or re-bundle or otherwise make available this code;
+	provided, however, if you are an authorized user with a NetSuite account or log-in, you
+	may use this code subject to the terms that govern your access and use.
+*/
+
+.cart-promocode-list-item {
+	clear:both;
+}
+
+.cart-promocode-list-item-container {
+	padding-left:$sc-base-padding * 3;
+	padding-bottom: $sc-base-padding * 2;
+}
+
+.cart-promocode-list-item-code-readonly {
+}
+
+.cart-promocode-list-item-code-editable {
+	color: $sc-color-secondary;
+}
+
+.cart-promocode-list-item-remove-action {
+	margin-left: $sc-base-margin;
+	cursor: pointer;
+	cursor: hand;
+
+	i {
+		@extend .icon-base;
+		@extend %fa-times-circle;
+		color: $sc-color-theme-light;
+		position: relative;
+  		top: 2px;
+	}
+}
+
+.cart-promocode-list-item-discount {
+	@extend .summary-grid-right;
+}
